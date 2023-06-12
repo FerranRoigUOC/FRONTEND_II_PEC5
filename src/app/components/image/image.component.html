@@ -1,0 +1,28 @@
+<div class="container mt-5">
+
+    <div *ngIf="image" class="row animate__animated animate__bounce animate__fadeInLeftBig">
+        <div class="col-md-9">
+            <mat-accordion>
+            <mat-expansion-panel hideToggle>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                    <p><strong>Author:</strong>{{ image.author }}</p>
+                </mat-panel-title>
+                <mat-panel-description>
+                    SHOW ALL DETAILS
+                </mat-panel-description>
+              </mat-expansion-panel-header>
+                <img mat-card-image style="width: 80%; height: 80%;" class="rounded" src="{{image.download_url}}" alt="">
+                <p><strong>Identifier:</strong> {{ image.id }}</p>
+                <p><strong>Size:</strong>{{ image.width }}</p>
+                <p><strong>Url:</strong>{{ image.url }}</p>
+            </mat-expansion-panel>
+            <mat-expansion-panel (opened)="showAllDetails = true" (closed)="showAllDetails = false">
+            </mat-expansion-panel>
+          </mat-accordion>
+        </div>
+        <div class="col-md-3">
+            <a class="btn btn-danger" routerLink="/">Back</a>
+        </div>
+    </div>
+</div>

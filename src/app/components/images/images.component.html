@@ -1,0 +1,23 @@
+<div class="loading" *ngIf="loading">
+    <mat-spinner></mat-spinner>
+</div>
+
+<div>
+    <button mat-button (click)="toggleView('grid')"><mat-icon>grid_on</mat-icon></button>
+    <button mat-button (click)="toggleView('card')"><mat-icon>list_view</mat-icon></button>
+</div>
+  
+
+<ul class="list-group" *ngIf="view === 'card'">
+    <mat-card *ngFor="let image of images" [routerLink]="['/image', image.id]" class="list-group-item list-group-item-action animate__animated animate__bounce animate__fadeInLeftBig">
+        {{image.id}} - {{image.author}}
+    </mat-card >
+</ul> 
+  
+<mat-grid-list cols="4" rowHeight="200px" *ngIf="view === 'grid'">
+    <mat-grid-tile
+        *ngFor="let image of images" [routerLink]="['/image', image.id]" class="list-group-item list-group-item-action animate__animated animate__bounce animate__fadeInLeftBig">
+        {{image.id}} - {{image.author}}
+  </mat-grid-tile>
+</mat-grid-list>
+  
